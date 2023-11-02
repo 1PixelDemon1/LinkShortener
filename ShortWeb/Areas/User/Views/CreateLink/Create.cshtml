@@ -1,0 +1,31 @@
+﻿@model ShortLink
+
+<div class="my-5 d-flex justify-content-center ">
+    @if (Model is not null)
+    {
+        <div class="card p-3 ">
+            <div class="card-header">
+                <span>Here is your link to the:</span>
+                <a href="@Model.Link" class="text-light">@Model.Link</a>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-center ">
+                    <p class="fs-1 text-uppercase">@Model.ShortenedLink</p>
+                </div>
+                <a class="btn btn-primary form-control" asp-controller="Home" asp-action="Index">Got It!</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <form method="post" class="w-50">
+            <input asp-for="Id" hidden />
+            <input asp-for="ShortenedLink" hidden />
+            <div class="mb-3">
+                <label class="form-label">Enter your desired link</label>
+                <input asp-for="Link" type="text" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    }
+</div>

@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using ShortDataAccess.Data;
+using System;
 using System.Configuration;
 
 namespace ShortWeb
 {
     public class Program
     {
+        
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -34,7 +36,22 @@ namespace ShortWeb
                 name: "default",
                 pattern: "{area=User}/{controller=Home}/{action=Index}/{id?}");
 
+            ApplyMigration(app);
+
             app.Run();
+        }
+
+        public static void ApplyMigration(WebApplication app)
+        {
+            using (var scope = app.Services.CreateScope())
+            {
+                var _db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+                if (_db.Database.GetPendingMigrations().Count() > 0)
+                {
+                    _db.Database.Migrate();
+                }
+            }
         }
     }
 }

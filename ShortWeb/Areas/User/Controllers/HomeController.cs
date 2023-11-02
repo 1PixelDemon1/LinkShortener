@@ -22,7 +22,7 @@ namespace ShortWeb.Areas.User.Controllers
                 return View();
             }
 
-            ShortLink? obj = _db.ShortLinks.FirstOrDefault(lnk => lnk.ShortenedLink == shortLnk.link);
+            ShortLink? obj = _db.ShortLinks.FirstOrDefault(lnk => lnk.ShortenedLink == shortLnk.link.ToLower());
             
             if(obj is null)
             {
