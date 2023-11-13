@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShortDataAccess.Data;
-using ShortModel.Models;
-using ShortModel.Models.ViewModels;
+using ShortWeb.DataAccess.Data;
+using ShortWeb.Model.Models;
+using ShortWeb.Model.Models.ViewModels;
 
 namespace ShortWeb.Areas.User.Controllers
 {

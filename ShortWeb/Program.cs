@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ShortDataAccess.Data;
-using System;
-using System.Configuration;
+using ShortWeb.DataAccess.Data;
 
 namespace ShortWeb
 {

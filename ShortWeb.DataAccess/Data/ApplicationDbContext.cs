@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShortModel.Models;
+using ShortWeb.Model.Models;
 
-namespace ShortDataAccess.Data
+namespace ShortWeb.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

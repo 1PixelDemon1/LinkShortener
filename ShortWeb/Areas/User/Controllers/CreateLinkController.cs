@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShortDataAccess.Data;
-using ShortModel.Models;
+using ShortWeb.DataAccess.Data;
+using ShortWeb.Model.Models;
 using System.Diagnostics;
 
 namespace ShortWeb.Areas.User.Controllers

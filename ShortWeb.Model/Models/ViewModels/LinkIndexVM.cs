@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShortModel.Models.ViewModels
+namespace ShortWeb.Model.Models.ViewModels
 {    
     public class LinkIndexVM
     {

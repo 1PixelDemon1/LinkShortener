@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -22,12 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShortDataAccess\ShortDataAccess.csproj" />
-    <ProjectReference Include="..\ShortModel\ShortModel.csproj" />
+    <Folder Include="Areas\Admin\Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
+    <ProjectReference Include="..\ShortWeb.DataAccess\ShortWeb.DataAccess.csproj" />
+    <ProjectReference Include="..\ShortWeb.Model\ShortWeb.Model.csproj" />
   </ItemGroup>
 
 </Project>
