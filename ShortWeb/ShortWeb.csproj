@@ -19,15 +19,36 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ShortWeb.DataAccess\ShortWeb.DataAccess.csproj" />
     <ProjectReference Include="..\ShortWeb.Model\ShortWeb.Model.csproj" />
+    <ProjectReference Include="..\ShortWeb.Utility\ShortWeb.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\CreateLink\Create.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Home\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Home\Privacy.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\_ViewStart.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

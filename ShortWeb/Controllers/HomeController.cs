@@ -5,7 +5,6 @@ using ShortWeb.Model.Models.ViewModels;
 
 namespace ShortWeb.Areas.User.Controllers
 {
-    [Area("User")]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _db;

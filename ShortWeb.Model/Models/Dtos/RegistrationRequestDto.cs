@@ -1,4 +1,4 @@
-﻿namespace ShortWeb.AuthService.Models.Dtos
+﻿namespace ShortWeb.Model.Models.Dtos
 {
     // When somebody tries to Register new user
     // he must pass this model.
@@ -8,7 +8,6 @@
         public string Email { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
-        public string PhoneNumber { get; set; }
         public string Role { get; set; }
     }
 }

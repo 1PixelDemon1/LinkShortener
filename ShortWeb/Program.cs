@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using ShortWeb.DataAccess.Data;
+using ShortWeb.Service;
+using ShortWeb.Service.IService;
+using ShortWeb.Utility;
 
 namespace ShortWeb
 {
@@ -12,7 +16,30 @@ namespace ShortWeb
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Managing HTTP
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddHttpClient();
+            builder.Services.AddHttpClient<IAuthenticationService, AuthenticationService>();
+
+            // Registring using authentication
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => 
+                {
+                    options.ExpireTimeSpan = TimeSpan.FromHours(10);
+                    options.LoginPath = "/Authentication/Login";
+                    options.AccessDeniedPath = "/Authentication/AccessDenied";
+                });
+
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultPostgresConnection")));
+
+            builder.Services.AddScoped<IBaseService, BaseService>();
+            builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddScoped<ITokenProvider, TokenProvider>();
+
+            //TODO fix that.
+            StaticData.AuthenticationApiBase = builder.Configuration["ServiceUrls:AuthenticationServiceApi"]!;
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,11 +55,13 @@ namespace ShortWeb
 
             app.UseRouting();
 
+            // If we add authentication we use authentication
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{area=User}/{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             ApplyMigration(app);
 

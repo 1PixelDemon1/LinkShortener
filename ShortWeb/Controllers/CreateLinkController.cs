@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShortWeb.DataAccess.Data;
 using ShortWeb.Model.Models;
 using System.Diagnostics;
 
 namespace ShortWeb.Areas.User.Controllers
 {
-    [Area("User")]
+    [Authorize]
     public class CreateLinkController : Controller
     {
 

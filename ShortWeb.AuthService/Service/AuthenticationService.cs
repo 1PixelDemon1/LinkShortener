@@ -33,12 +33,12 @@ namespace ShortWeb.AuthService.Service
             {
                 return new LoginResponseDto() { Token = "", User = null };
             }
-            string token = _jwtTokenGenerator.GenerateToken(user);
+            var roles = await _userManager.GetRolesAsync(user);
+            string token = _jwtTokenGenerator.GenerateToken(user, roles);
             
             UserDto userDto = new()
             {
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
                 Id = user.Id,
                 Name = loginRequestDto.UserName
             };
@@ -60,7 +60,6 @@ namespace ShortWeb.AuthService.Service
                 Email = registrationRequestDto.Email,
                 NormalizedEmail = registrationRequestDto.Email.ToUpper(),
                 Name = registrationRequestDto.Name,
-                PhoneNumber = registrationRequestDto.PhoneNumber
             };
 
             try
